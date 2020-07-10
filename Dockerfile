@@ -67,3 +67,4 @@ RUN git clone https://github.com/ConYel/spar_prepare.git \
 
 ENV LANG='en_US.UTF-8' LANGUAGE='en_US:en' LC_ALL='en_US.UTF-8'
 COPY STAR_sam_script.txt /home
+RUN chmod 700 STAR_sam_script.txt

@@ -60,7 +60,8 @@ RUN conda update conda \
   
 # fix an issue with libraries openssl
 RUN ln -sf /root/miniconda/pkgs/openssl-1.1.1d-h7b6447c_4/lib/libcrypto.so.1.1 /usr/lib/libcrypto.so.1.0.0 \
-	&& ln -sf /root/miniconda/pkgs/openssl-1.1.1d-h7b6447c_4/lib/libcrypto.so.1.1 /usr/lib/libcrypto.so.1.0.0
+	&& ln -sf /root/miniconda/pkgs/openssl-1.1.1d-h7b6447c_4/lib/libcrypto.so.1.1 /usr/lib/libcrypto.so.1.0.0 \
+	&& export PATH=/root/miniconda/bin:$PATH
 # install SPAR prepare
 RUN git clone https://github.com/ConYel/spar_prepare.git \
 && chmod -R 700 spar_prepare/* 
@@ -68,4 +69,4 @@ RUN git clone https://github.com/ConYel/spar_prepare.git \
 ENV LANG='en_US.UTF-8' LANGUAGE='en_US:en' LC_ALL='en_US.UTF-8'
 COPY STAR_sam_script.txt /home
 COPY download_SRA.sh /home
-RUN chmod 700 STAR_sam_script.txt download_SRA.sh
+RUN chmod 700 STAR_sam_script.txt download_SRA.sh 

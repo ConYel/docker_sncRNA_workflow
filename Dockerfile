@@ -56,7 +56,7 @@ RUN conda update conda \
 	&& conda config --add channels defaults \
 	&& conda config --add channels bioconda \
 	&& conda config --add channels conda-forge \
-	&& conda install bedtools samtools star cutadapt multiqc fastqc sed -y
+	&& conda install bedtools samtools star cutadapt multiqc fastqc sed trim-galore -y
   
 # fix an issue with libraries openssl
 RUN ln -sf /root/miniconda/pkgs/openssl-1.1.1d-h7b6447c_4/lib/libcrypto.so.1.1 /usr/lib/libcrypto.so.1.0.0 \
@@ -67,4 +67,5 @@ RUN git clone https://github.com/ConYel/spar_prepare.git \
 
 ENV LANG='en_US.UTF-8' LANGUAGE='en_US:en' LC_ALL='en_US.UTF-8'
 COPY STAR_sam_script.txt /home
-RUN chmod 700 STAR_sam_script.txt
+COPY download_SRA.sh /home
+RUN chmod 700 STAR_sam_script

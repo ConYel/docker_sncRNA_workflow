@@ -59,8 +59,7 @@ RUN conda update conda \
 	&& conda install bedtools samtools star cutadapt multiqc fastqc sed trim-galore -y
   
 # fix an issue with libraries openssl
-RUN ln -sf /root/miniconda/pkgs/openssl-1.1.1d-h7b6447c_4/lib/libcrypto.so.1.1 /usr/lib/libcrypto.so.1.0.0 \
-	&& ln -sf /root/miniconda/pkgs/openssl-1.1.1d-h7b6447c_4/lib/libcrypto.so.1.1 /usr/lib/libcrypto.so.1.0.0 
+RUN ln -sf /root/miniconda/pkgs/openssl-1.1.1g-h7b6447c_0/lib/libcrypto.so.1.1 /usr/lib/libcrypto.so.1.0.0 
 	
 # install SPAR prepare
 RUN git clone https://github.com/ConYel/spar_prepare.git \

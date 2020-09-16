@@ -35,10 +35,11 @@ done
 while read -r line; do
  echo "Now downloading "${line}"\n"
  docker run --rm -v "$OUTPUT_DIR":/data -w /data inutano/sra-toolkit fasterq-dump "${line}" -t /data/shm -e $PROCESSORS
+ sleep 1
  if [[ -s $OUTPUT_DIR/${line}.fastq ]]; then
  echo "Using pigz on ${line}.fastq" 
      pigz --best $OUTPUT_DIR/${line}*.fastq
  else 
-    echo "$OUTPUT_DIR/${line}.fastq not found"
+    echo "$OUTPUT_DIR/${line}.fastq not found"   
  fi
  done < "$INPUT_txt"

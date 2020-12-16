@@ -56,7 +56,7 @@ RUN conda update conda \
 	&& conda config --add channels defaults \
 	&& conda config --add channels bioconda \
 	&& conda config --add channels conda-forge \
-	&& conda install bedtools samtools star cutadapt multiqc fastqc sed trim-galore -y
+	&& conda install bedtools samtools star cutadapt multiqc fastqc sed trim-galore fastq-dl -y
   
 # fix an issue with libraries openssl
 RUN ln -sf /root/miniconda/pkgs/openssl-1.1.1g-h7b6447c_0/lib/libcrypto.so.1.1 /usr/lib/libcrypto.so.1.0.0 

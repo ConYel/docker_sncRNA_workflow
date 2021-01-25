@@ -50,15 +50,6 @@ RUN apt-get update -y \
 	&& echo 'export PATH="~/miniconda/bin:$PATH"' >> ~/.bashrc \
 	&& ln -sf ~/miniconda/condabin/conda /usr/local/bin/conda \
 	&& rm -rf /var/lib/apt/lists/* /tmp/* 
- 
-# Get Rust
-RUN curl https://sh.rustup.rs -sSf | sh -s -- -y
-
-# Add .cargo/bin to PATH
-ENV PATH="/root/.cargo/bin:${PATH}"
-
-# install fcat
-RUN cargo install fcat
 
 # config conda channel
 RUN conda update conda \
@@ -74,6 +65,14 @@ RUN ln -sf /root/miniconda/pkgs/openssl-1.1.1h-h7b6447c_0/lib/libcrypto.so.1.1 /
 RUN git clone https://github.com/ConYel/spar_prepare.git \
 && chmod -R 700 spar_prepare/* 
 
+# Get Rust
+RUN curl https://sh.rustup.rs -sSf | sh -s -- -y
+
+# Add .cargo/bin to PATH
+ENV PATH="/root/.cargo/bin:${PATH}"
+
+# install fcat
+RUN cargo install fcat
 ENV LANG='en_US.UTF-8' LANGUAGE='en_US:en' LC_ALL='en_US.UTF-8'
 COPY STAR_sam_script.txt /home
 COPY download_SRA.sh /home

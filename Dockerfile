@@ -22,6 +22,7 @@ RUN apt-get update -y \
 	software-properties-common \
 	apt-utils \
 	nano \
+	curl \
 	dirmngr \
 	bzip2 \
 	cmake \
